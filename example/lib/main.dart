@@ -35,13 +35,8 @@ class _RandomWordsState extends State<RandomWords> {
       // body: _buildSuggestions(),
       body: Center(
         child: ShadedText(
-          shadeBuilder: (context, text, color) => Text(
-            text,
-            style: TextStyle(color: color),
-          ),
-          shadeColor: Colors.black,
-          textColor: Colors.lightBlue,
-          text: 'Testing the shaded Text Widget',
+          appKey: '1cgrvuwao',
+          adKey: 'd3k4m8hqf',
         ),
       ),
     );
