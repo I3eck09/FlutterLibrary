@@ -34,7 +34,7 @@ class _RandomWordsState extends State<RandomWords> {
       ),
       // body: _buildSuggestions(),
       body: Center(
-        child: ShadedText(
+        child: AFB(
           appKey: '1cgrvuwao',
           adKey: 'd3k4m8hqf',
         ),
