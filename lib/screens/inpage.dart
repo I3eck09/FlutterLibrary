@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-final Uri _url = Uri.parse(
+final Uri _redirectUrl = Uri.parse(
     'https://api-afbrother.skuberg.pro/creatives/mobile/ad_click?adKey=6zryzgjyd&appKey=1cgrvuwao');
 
 class Inpage extends StatefulWidget {
-  const Inpage({String? imgUrl});
+  final String data;
+  const Inpage(this.data, {String? imgUrl});
 
   @override
   State<Inpage> createState() => _InpageState();
 }
 
 class _InpageState extends State<Inpage> {
-  var testUrl =
+  var inpage =
       'https://api-afbrother.skuberg.pro/creatives/display/b63c7f02-7020-4f04-a5ee-620c63f740b4';
+  var sticky =
+      'https://api-afbrother.skuberg.pro/creatives/display/b2d4da70-1fac-4c26-a431-8a8daf9c8170';
   bool isClosed = false;
 
   void _launchUrl() async {
-    print(_url);
+    print(_redirectUrl);
     // await launchUrl(_url);
-    if (!await launchUrl(_url)) throw 'Could not launch $_url';
+    if (!await launchUrl(_redirectUrl)) throw 'Could not launch $_redirectUrl';
   }
 
   void Closed() {
@@ -30,6 +33,7 @@ class _InpageState extends State<Inpage> {
 
   @override
   Widget build(BuildContext context) {
+    print('data' + widget.data);
     return Scaffold(
       body: !isClosed
           ? Material(
@@ -39,56 +43,33 @@ class _InpageState extends State<Inpage> {
               },
               child: Stack(
                 children: <Widget>[
+                  // Image.network(testUrl),
                   Container(
-                    child: Image.network(testUrl),
+                    child: Image.network(widget.data),
                   ),
-                  Ink(
-                    decoration: const ShapeDecoration(
-                        color: Colors.grey, shape: CircleBorder()),
-                    child: IconButton(
-                      icon: const Icon(Icons.cancel_outlined),
-                      color: Colors.white,
-                      iconSize: 50,
-                      splashRadius: 40,
-                      disabledColor: Colors.grey,
-                      onPressed: () {
+                  Container(
+                    width: 30,
+                    height: 30,
+                    alignment: Alignment.topLeft,
+                    color: Colors.white.withOpacity(0.1),
+                    child: GestureDetector(
+                      onTap: () {
                         Closed();
                       },
-                      tooltip: "Play",
+                      child: Image.network(
+                        'https://api-afbrother.skuberg.pro/api/serverImage/close.png',
+                      ),
                     ),
                   )
-
-                  //   IconButton(
-                  //   color: Colors.blue,
-                  //   icon: const Icon(
-                  //     Icons.volume_down,
-                  //     color: Colors.white,
-                  //   ),
-                  //   onPressed: () {
-                  //     print('object');
-                  //   },
-                  //   //     child: ElevatedButton(
-                  //   //   onPressed: () {
-                  //   //     Closed();
-                  //   //     // print('Close');
-                  //   //   },
-                  //   //   child: Container(
-                  //   //     decoration: const BoxDecoration(
-                  //   //         image: DecorationImage(
-                  //   //             image: NetworkImage(
-                  //   //                 'https://i.pinimg.com/474x/58/bd/84/58bd84fe90617dfc1bc32eb5e8643367.jpg'),
-                  //   //             opacity: 0.4,
-                  //   //             scale: 1,
-                  //   //             alignment: Alignment.topLeft)),
-                  //   //   ),
-                  //   // )
-                  // )
+                  // ElevatedButton(
+                  //     onPressed: () {
+                  //       print('Closed');
+                  //     },
+                  //     child: Image.network(
+                  //       'https://api-afbrother.skuberg.pro/api/serverImage/close.png',
+                  //     ),
+                  //     ),
                 ],
-                // width: 200.0,
-                // height: 200.0,
-                // decoration: BoxDecoration(
-                //     image: DecorationImage(
-                //         image: NetworkImage(testUrl), fit: BoxFit.cover)),
               ),
             ))
           : Container(
@@ -98,7 +79,7 @@ class _InpageState extends State<Inpage> {
                       isClosed = false;
                     });
                   },
-                  icon: Icon(Icons.volume_down)),
+                  icon: Icon(Icons.egg)),
             ),
     );
   }

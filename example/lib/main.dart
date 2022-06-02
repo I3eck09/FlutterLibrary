@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:box_ui/box_ui.dart';
 
+// Footer
+import 'package:footer/footer.dart';
+import 'package:footer/footer_view.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -28,18 +32,23 @@ class _RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
     final wordPair = WordPair.random();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Startup name generator'),
+    return SafeArea(
+        child: Scaffold(
+      body: FooterPage(),
+      bottomNavigationBar: Row(
+        children: [
+          Container(
+            height: 15,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(color: Colors.lightBlue),
+            child: AFB(
+              appKey: '1cgrvuwao',
+              adKey: 'oyto7vgtt',
+            ),
+          ),
+        ],
       ),
-      // body: _buildSuggestions(),
-      body: Center(
-        child: AFB(
-          appKey: '1cgrvuwao',
-          adKey: 'd3k4m8hqf',
-        ),
-      ),
-    );
+    ));
   }
 
   Widget _buildSuggestions() {
@@ -64,5 +73,35 @@ class _RandomWordsState extends State<RandomWords> {
       pair.asPascalCase,
       style: _biggerFont,
     ));
+  }
+}
+
+class FooterPage extends StatefulWidget {
+  @override
+  FooterPageState createState() {
+    return new FooterPageState();
+  }
+}
+
+class FooterPageState extends State<FooterPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: new Text(
+        'Flutter Footer View',
+        style: TextStyle(fontWeight: FontWeight.w200),
+      )),
+      drawer: new Drawer(),
+      body: AFB(
+        appKey: '1cgrvuwao',
+        adKey: 'd3k4m8hqf',
+      ),
+      floatingActionButton: new FloatingActionButton(
+          elevation: 10.0,
+          child: new Icon(Icons.chat),
+          backgroundColor: Color(0xFF162A49),
+          onPressed: () {}),
+    );
   }
 }
