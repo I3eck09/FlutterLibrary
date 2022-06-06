@@ -37,15 +37,30 @@ class _RandomWordsState extends State<RandomWords> {
       body: FooterPage(),
       bottomNavigationBar: Row(
         children: [
-          Container(
-            height: 15,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(color: Colors.lightBlue),
-            child: AFB(
-              appKey: '1cgrvuwao',
-              adKey: 'oyto7vgtt',
-            ),
-          ),
+          Stack(
+            children: [
+              Container(
+                height: 40,
+                width: MediaQuery.of(context).size.width,
+                alignment: Alignment.topRight,
+                // width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(color: Colors.lightBlue),
+                child: AFB(
+                  appKey: '1cgrvuwao',
+                  adKey: 'rscztoaic',
+                ),
+              ),
+              Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(color: Colors.lightBlue),
+                child: AFB(
+                  appKey: '1cgrvuwao',
+                  adKey: 'oyto7vgtt',
+                ),
+              ),
+            ],
+          )
         ],
       ),
     ));
@@ -93,9 +108,26 @@ class FooterPageState extends State<FooterPage> {
         style: TextStyle(fontWeight: FontWeight.w200),
       )),
       drawer: new Drawer(),
-      body: AFB(
-        appKey: '1cgrvuwao',
-        adKey: 'd3k4m8hqf',
+      body: Container(
+        child: AFB(
+          appKey: '1cgrvuwao',
+          adKey: 'd3k4m8hqf',
+        ),
+
+        // Column(
+        //   children: [
+        //     AFB(
+        //        // Header
+        //       appKey: '1cgrvuwao',
+        //       adKey: 'rp4abc2qg',
+        //     ),
+        //     AFB(
+        //        // In-page
+        //       appKey: '1cgrvuwao',
+        //       adKey: 'd3k4m8hqf',
+        //     ),
+        //   ],
+        // ),
       ),
       floatingActionButton: new FloatingActionButton(
           elevation: 10.0,

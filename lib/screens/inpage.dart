@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-final Uri _redirectUrl = Uri.parse(
-    'https://api-afbrother.skuberg.pro/creatives/mobile/ad_click?adKey=6zryzgjyd&appKey=1cgrvuwao');
-
 class Inpage extends StatefulWidget {
-  final String data;
-  const Inpage(this.data, {String? imgUrl});
+  final data;
+  const Inpage(this.data);
 
   @override
   State<Inpage> createState() => _InpageState();
@@ -20,9 +17,9 @@ class _InpageState extends State<Inpage> {
   bool isClosed = false;
 
   void _launchUrl() async {
-    print(_redirectUrl);
     // await launchUrl(_url);
-    if (!await launchUrl(_redirectUrl)) throw 'Could not launch $_redirectUrl';
+    if (!await launchUrl(Uri.parse(widget.data['href'])))
+      throw 'Could not launch ${widget.data['href']}';
   }
 
   void Closed() {
@@ -33,7 +30,6 @@ class _InpageState extends State<Inpage> {
 
   @override
   Widget build(BuildContext context) {
-    print('data' + widget.data);
     return Scaffold(
       body: !isClosed
           ? Material(
@@ -45,7 +41,12 @@ class _InpageState extends State<Inpage> {
                 children: <Widget>[
                   // Image.network(testUrl),
                   Container(
-                    child: Image.network(widget.data),
+                    // margin: const EdgeInsets.only(top: 500.0),
+                    child: Image.network(
+                      widget.data['url'],
+                      width: widget.data['width'].toDouble(),
+                      height: widget.data['height'].toDouble(),
+                    ),
                   ),
                   Container(
                     width: 30,
@@ -61,14 +62,6 @@ class _InpageState extends State<Inpage> {
                       ),
                     ),
                   )
-                  // ElevatedButton(
-                  //     onPressed: () {
-                  //       print('Closed');
-                  //     },
-                  //     child: Image.network(
-                  //       'https://api-afbrother.skuberg.pro/api/serverImage/close.png',
-                  //     ),
-                  //     ),
                 ],
               ),
             ))

@@ -25,7 +25,7 @@ class AFB extends StatelessWidget {
   var ImUrl = 'https://api-afbrother.skuberg.pro/creatives/app_ad_impression';
 
   // Call AFBrother API
-  Future<String> _getAdsData() async {
+  Future<Object> _getAdsData() async {
     var url = Uri.parse(
         'https://api-afbrother.skuberg.pro/application/render_application_ads');
     http.Response response =
@@ -39,7 +39,7 @@ class AFB extends StatelessWidget {
     } else {
       print('failed');
     }
-    return jsonResponse['url'];
+    return jsonResponse;
   }
 
   impressionAds() async {
@@ -49,8 +49,24 @@ class AFB extends StatelessWidget {
         body: {'adServerKey': '6zryzgjyd', 'appKey': appKey, 'adKey': adKey});
   }
 
-  _getAdsByFormat(value) {
-    print('value' + value);
+  _getAdsByFormat(String banner_format, data) {
+    switch (banner_format) {
+      case "IN_PAGE":
+        {
+          return Inpage(data);
+        }
+        break;
+      case "STICKY":
+        {
+          return Inpage(data);
+        }
+        break;
+      default:
+        {
+          return Inpage(data);
+        }
+    }
+    print('value' + banner_format);
   }
 
   AFB({required this.appKey, required this.adKey})
@@ -65,10 +81,13 @@ class AFB extends StatelessWidget {
         child: FutureBuilder(
             future: _getAdsData(),
             builder: (context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                impressionAds();
-              }
-              return Inpage(snapshot.data);
+              // if (snapshot.connectionState == ConnectionState.done) {
+              //   impressionAds();
+              // }
+              print(snapshot.data);
+              ;
+              return _getAdsByFormat(
+                  snapshot.data['banner_format'], snapshot.data);
             }),
       ),
     );
