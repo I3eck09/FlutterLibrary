@@ -1,6 +1,7 @@
 library box_ui;
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:box_ui/screens/inpage.dart';
 import 'package:box_ui/api/apiService.dart';
@@ -20,6 +21,7 @@ typedef ShadeBuilder = Widget Function(
 class AFB extends StatelessWidget {
   final String appKey;
   final String adKey;
+  bool isClosed = false;
   var imgUrl = '';
 
   var ImUrl = 'https://api-afbrother.skuberg.pro/creatives/app_ad_impression';
@@ -47,26 +49,28 @@ class AFB extends StatelessWidget {
         'https://api-afbrother.skuberg.pro/creatives/app_ad_impression');
     http.Response response = await http.post(url,
         body: {'adServerKey': '6zryzgjyd', 'appKey': appKey, 'adKey': adKey});
+    print(response.body);
   }
 
   _getAdsByFormat(String banner_format, data) {
+    // print('value' + banner_format);
+
     switch (banner_format) {
       case "IN_PAGE":
         {
-          return Inpage(data);
+          return Inpage(data, isClosed);
         }
         break;
       case "STICKY":
         {
-          return Inpage(data);
+          return Inpage(data, isClosed);
         }
         break;
       default:
         {
-          return Inpage(data);
+          return Inpage(data, isClosed);
         }
     }
-    print('value' + banner_format);
   }
 
   AFB({required this.appKey, required this.adKey})
@@ -81,11 +85,12 @@ class AFB extends StatelessWidget {
         child: FutureBuilder(
             future: _getAdsData(),
             builder: (context, AsyncSnapshot snapshot) {
-              // if (snapshot.connectionState == ConnectionState.done) {
-              //   impressionAds();
-              // }
-              print(snapshot.data);
-              ;
+              if (snapshot.connectionState == ConnectionState.done) {
+                impressionAds();
+              }
+              // print('1' +
+              //     _getAdsByFormat(
+              //         snapshot.data['banner_format'], snapshot.data));
               return _getAdsByFormat(
                   snapshot.data['banner_format'], snapshot.data);
             }),
