@@ -33,7 +33,7 @@ class _RandomWordsState extends State<RandomWords> {
       appBar: AppBar(
         title: const Text('Test'),
       ),
-      body: FooterPage(),
+      body: const FooterPage(),
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -61,7 +61,7 @@ class _RandomWordsState extends State<RandomWords> {
           Container(
             height: 20,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(color: Colors.lightBlue),
+            decoration: const BoxDecoration(color: Colors.lightBlue),
             child: AFB(
               appKey: '1cgrvuwao',
               adKey: 'oyto7vgtt',
@@ -74,6 +74,8 @@ class _RandomWordsState extends State<RandomWords> {
 }
 
 class FooterPage extends StatefulWidget {
+  const FooterPage({Key? key}) : super(key: key);
+
   @override
   FooterPageState createState() {
     return new FooterPageState();
@@ -87,7 +89,7 @@ class FooterPageState extends State<FooterPage> {
       appBar: AppBar(
           title: new Text(
         'Flutter Footer View',
-        style: TextStyle(fontWeight: FontWeight.w200),
+        style: const TextStyle(fontWeight: FontWeight.w200),
       )),
       drawer: new Drawer(),
       body: Container(
@@ -95,53 +97,53 @@ class FooterPageState extends State<FooterPage> {
           padding: const EdgeInsets.all(0.0),
           children: <Widget>[
             Container(
-              child: BannerHeader(),
+              child: const BannerHeader(),
             ),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: const Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.battery_full)),
             Container(
-              child: BannerInpage(),
+              child: const BannerInpage(),
             ),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot)),
-            ListTile(title: Icon(Icons.battery_full)),
-            ListTile(title: Icon(Icons.anchor)),
-            ListTile(title: Icon(Icons.access_alarm)),
-            ListTile(title: Icon(Icons.ballot))
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: const Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.battery_full)),
+            const ListTile(title: const Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot)),
+            const ListTile(title: Icon(Icons.battery_full)),
+            const ListTile(title: Icon(Icons.anchor)),
+            const ListTile(title: Icon(Icons.access_alarm)),
+            const ListTile(title: Icon(Icons.ballot))
           ],
         ),
       ),
@@ -162,7 +164,7 @@ class FooterPageState extends State<FooterPage> {
       floatingActionButton: new FloatingActionButton(
           elevation: 10.0,
           child: new Icon(Icons.chat),
-          backgroundColor: Color(0xFF162A49),
+          backgroundColor: const Color(0xFF162A49),
           onPressed: () {}),
     );
   }

@@ -6,7 +6,7 @@ import 'dart:developer';
 import 'package:box_ui/screens/inpage.dart';
 import 'package:box_ui/api/apiService.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+// import 'package:meta/meta.dart';
 // Call Api
 import 'package:http/http.dart' as http;
 // Url launcher (Redirect)
