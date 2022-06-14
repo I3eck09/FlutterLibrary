@@ -54,11 +54,11 @@ class _RandomWordsState extends State<RandomWords> {
                         ),
                       ],
                     ),
-                    // AFB(
-                    //   // Sticky
-                    //   appKey: 'fw0o1kyuy',
-                    //   adKey: 't870af793',
-                    // ),
+                    AFB(
+                      // Sticky
+                      appKey: 'fw0o1kyuy',
+                      adKey: 't870af793',
+                    ),
                   ],
                 )
                 // +++++++++++++++++++++++++++++++++++++++++++++++
@@ -94,6 +94,11 @@ class FooterPageState extends State<FooterPage> {
             const ListTile(title: Text('2')),
             const ListTile(title: Text('3')),
             const ListTile(title: Text('4')),
+            AFB(
+              // Inpage
+              appKey: 'fw0o1kyuy',
+              adKey: 'e0sd58g2x',
+            ),
             const ListTile(title: Text('5')),
             const ListTile(title: Text('6')),
             const ListTile(title: Text('7')),

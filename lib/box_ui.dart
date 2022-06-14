@@ -35,51 +35,40 @@ class AFB extends StatelessWidget {
 
   // Call AFBrother API
   Future<Object> _getAdsData() async {
-    var url = Uri.parse('https://jsonplaceholder.typicode.com/users');
-    print(1);
-    print(url);
-    // http.Response response = await http.get(url);
-    print(2);
-    // print(response);
+    var url = Uri.parse(Render_ads_API);
+    http.Response response =
+        await http.post(url, body: {'appKey': appKey, 'adKey': adKey});
+
     var jsonResponse;
-    // if (response.statusCode == 200) {
-    //   jsonResponse = jsonDecode(response.body);
-    //   Map.from(jsonResponse as Map<String, dynamic>);
-    // } else {
-    //   print('failed');
-    // }
-    return 'jsonResponse';
+    if (response.statusCode == 200) {
+      jsonResponse = jsonDecode(response.body);
+      Map.from(jsonResponse as Map<String, dynamic>);
+    }
+    return jsonResponse;
   }
 
   impressionAds() async {
     var url = Uri.parse(Impression_API);
     http.Response response = await http.post(url,
         body: {'adServerKey': '6zryzgjyd', 'appKey': appKey, 'adKey': adKey});
-    print(response.body);
   }
 
   _getAdsByFormat(String banner_format, data) {
-    print('value' + banner_format);
-
     switch (banner_format) {
       case "IN_PAGE":
         {
           return Inpage(data, isClosed);
         }
-        break;
       case "STICKY":
         {
           return Sticky(data, isClosed);
         }
-        break;
       case "SLIDE":
         {
           return Slide(data, isClosed);
         }
-        break;
       default:
         {
-          print('header');
           return Header(data, isClosed);
         }
     }
@@ -92,13 +81,17 @@ class AFB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _getAdsData();
-    return FutureBuilder(
-        future: _getAdsData(),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // impressionAds();
-          }
-          return const Text('No ads response');
-        });
+    return Container(
+      child: FutureBuilder(
+          future: _getAdsData(),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              impressionAds();
+            }
+            return snapshot.data != null
+                ? _getAdsByFormat(snapshot.data['banner_format'], snapshot.data)
+                : Text('No ads response');
+          }),
+    );
   }
 }
