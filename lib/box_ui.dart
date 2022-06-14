@@ -3,8 +3,11 @@ library box_ui;
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:box_ui/screens/header.dart';
 import 'package:box_ui/screens/inpage.dart';
 import 'package:box_ui/api/apiService.dart';
+import 'package:box_ui/screens/slide.dart';
+import 'package:box_ui/screens/sticky.dart';
 import 'package:flutter/material.dart';
 // import 'package:meta/meta.dart';
 // Call Api
@@ -21,39 +24,42 @@ typedef ShadeBuilder = Widget Function(
 class AFB extends StatelessWidget {
   final String appKey;
   final String adKey;
-  bool isClosed = false;
-  var imgUrl = '';
+  bool isClosed = true;
 
-  var ImUrl = 'https://api-afbrother.skuberg.pro/creatives/app_ad_impression';
+  var Render_ads_API =
+      'https://api-afbrother.skuberg.pro/application/render_application_ads';
+  var Impression_API =
+      'https://api-afbrother.skuberg.pro/creatives/app_ad_impression';
+
+  BuildContext? get context => null;
 
   // Call AFBrother API
   Future<Object> _getAdsData() async {
-    var url = Uri.parse(
-        'https://api-afbrother.skuberg.pro/application/render_application_ads');
-    http.Response response =
-        await http.post(url, body: {'appKey': appKey, 'adKey': adKey});
-
-    var jsonResponse = jsonDecode(response.body);
-
-    if (response.statusCode == 200) {
-      Map.from(jsonResponse as Map<String, dynamic>);
-      imgUrl = jsonResponse['url'];
-    } else {
-      print('failed');
-    }
-    return jsonResponse;
+    var url = Uri.parse('https://jsonplaceholder.typicode.com/users');
+    print(1);
+    print(url);
+    // http.Response response = await http.get(url);
+    print(2);
+    // print(response);
+    var jsonResponse;
+    // if (response.statusCode == 200) {
+    //   jsonResponse = jsonDecode(response.body);
+    //   Map.from(jsonResponse as Map<String, dynamic>);
+    // } else {
+    //   print('failed');
+    // }
+    return 'jsonResponse';
   }
 
   impressionAds() async {
-    var url = Uri.parse(
-        'https://api-afbrother.skuberg.pro/creatives/app_ad_impression');
+    var url = Uri.parse(Impression_API);
     http.Response response = await http.post(url,
         body: {'adServerKey': '6zryzgjyd', 'appKey': appKey, 'adKey': adKey});
     print(response.body);
   }
 
   _getAdsByFormat(String banner_format, data) {
-    // print('value' + banner_format);
+    print('value' + banner_format);
 
     switch (banner_format) {
       case "IN_PAGE":
@@ -63,12 +69,18 @@ class AFB extends StatelessWidget {
         break;
       case "STICKY":
         {
-          return Inpage(data, isClosed);
+          return Sticky(data, isClosed);
+        }
+        break;
+      case "SLIDE":
+        {
+          return Slide(data, isClosed);
         }
         break;
       default:
         {
-          return Inpage(data, isClosed);
+          print('header');
+          return Header(data, isClosed);
         }
     }
   }
@@ -80,21 +92,13 @@ class AFB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _getAdsData();
-    return new Scaffold(
-      body: Container(
-        child: FutureBuilder(
-            future: _getAdsData(),
-            builder: (context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                impressionAds();
-              }
-              // print('1' +
-              //     _getAdsByFormat(
-              //         snapshot.data['banner_format'], snapshot.data));
-              return _getAdsByFormat(
-                  snapshot.data['banner_format'], snapshot.data);
-            }),
-      ),
-    );
+    return FutureBuilder(
+        future: _getAdsData(),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // impressionAds();
+          }
+          return const Text('No ads response');
+        });
   }
 }

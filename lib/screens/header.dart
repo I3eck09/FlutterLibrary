@@ -1,31 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Inpage extends StatefulWidget {
+class Header extends StatefulWidget {
   final data;
   var isClosed;
   // ignore: use_key_in_widget_constructors
-  Inpage(this.data, this.isClosed);
+  Header(this.data, this.isClosed);
 
   @override
-  State<Inpage> createState() => _InpageState();
+  State<Header> createState() => _HeaderState();
 }
 
-class _InpageState extends State<Inpage> {
-  void _launchUrl() async {
-    // await launchUrl(_url);
-    if (!await launchUrl(Uri.parse(widget.data['href'])))
-      throw 'Could not launch ${widget.data['href']}';
-  }
-
-  void Closed() {
-    setState(() {
-      widget.isClosed = !widget.isClosed;
-    });
-  }
-
+class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
+    double setHeightByScale() {
+      var adsWidth = widget.data['width'];
+      var adsHeight = widget.data['height'];
+
+      var scrWidth = MediaQuery.of(context).size.width;
+
+      var heightScale = (scrWidth / adsWidth) * adsHeight;
+
+      return heightScale.toDouble();
+    }
+
+    void _launchUrl() async {
+      // await launchUrl(_url);
+      if (!await launchUrl(Uri.parse(widget.data['href'])))
+        throw 'Could not launch ${widget.data['href']}';
+    }
+
+    void Closed() {
+      setState(() {
+        widget.isClosed = !widget.isClosed;
+      });
+    }
+
     return Visibility(
         visible: widget.isClosed,
         child: GestureDetector(
@@ -39,8 +52,8 @@ class _InpageState extends State<Inpage> {
                 // margin: const EdgeInsets.only(top: 500.0),
                 child: Image.network(
                   widget.data['url'],
-                  width: widget.data['width'].toDouble(),
-                  height: widget.data['height'].toDouble(),
+                  width: MediaQuery.of(context).size.width,
+                  height: setHeightByScale(),
                 ),
               ),
               Container(

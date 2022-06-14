@@ -30,46 +30,40 @@ class _RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        title: const Text('Test'),
-      ),
-      body: const FooterPage(),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                height: 50,
-                // margin: const EdgeInsets.only(bottom: 10.0),
-                width: 50,
-                // color: Colors.red,
-                alignment: Alignment.topRight,
-                // decoration: BoxDecoration(color: Colors.lightBlue),
-                child: AFB(
-                  appKey: '1cgrvuwao',
-                  adKey: 'rscztoaic',
+            appBar: AppBar(
+                title: Text(
+              'AFBrother App',
+              style: const TextStyle(fontWeight: FontWeight.w200),
+            )),
+            body: Stack(
+              children: <Widget>[
+                Container(
+                  child: const FooterPage(),
                 ),
-              ),
-            ],
-          ),
-          // AFB(
-          //   appKey: '1cgrvuwao',
-          //   adKey: 'oyto7vgtt',
-          // ),
-          Container(
-            height: 20,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(color: Colors.lightBlue),
-            child: AFB(
-              appKey: '1cgrvuwao',
-              adKey: 'oyto7vgtt',
-            ),
-          ),
-        ],
-      ),
-    ));
+                // +++++++++++ Sticky and slide ads  ++++++++++++
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        AFB(
+                          // Slide
+                          appKey: 'fw0o1kyuy',
+                          adKey: 'va62tfr08',
+                        ),
+                      ],
+                    ),
+                    // AFB(
+                    //   // Sticky
+                    //   appKey: 'fw0o1kyuy',
+                    //   adKey: 't870af793',
+                    // ),
+                  ],
+                )
+                // +++++++++++++++++++++++++++++++++++++++++++++++
+              ],
+            )));
   }
 }
 
@@ -78,7 +72,7 @@ class FooterPage extends StatefulWidget {
 
   @override
   FooterPageState createState() {
-    return new FooterPageState();
+    return FooterPageState();
   }
 }
 
@@ -86,86 +80,27 @@ class FooterPageState extends State<FooterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: new Text(
-        'Flutter Footer View',
-        style: const TextStyle(fontWeight: FontWeight.w200),
-      )),
-      drawer: new Drawer(),
+      drawer: Drawer(),
       body: Container(
         child: ListView(
           padding: const EdgeInsets.all(0.0),
           children: <Widget>[
-            Container(
-              child: const BannerHeader(),
-            ),
-            const ListTile(title: Icon(Icons.battery_full)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: const Icon(Icons.battery_full)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.battery_full)),
-            Container(
-              child: const BannerInpage(),
-            ),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: const Icon(Icons.battery_full)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.battery_full)),
-            const ListTile(title: const Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.battery_full)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.battery_full)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.battery_full)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot)),
-            const ListTile(title: Icon(Icons.battery_full)),
-            const ListTile(title: Icon(Icons.anchor)),
-            const ListTile(title: Icon(Icons.access_alarm)),
-            const ListTile(title: Icon(Icons.ballot))
+            // AFB(
+            //   // Header
+            //   appKey: 'fw0o1kyuy',
+            //   adKey: 'v90lc82g4',
+            // ),
+            const ListTile(title: Text('1')),
+            const ListTile(title: Text('2')),
+            const ListTile(title: Text('3')),
+            const ListTile(title: Text('4')),
+            const ListTile(title: Text('5')),
+            const ListTile(title: Text('6')),
+            const ListTile(title: Text('7')),
+            const ListTile(title: Text('8')),
           ],
         ),
       ),
-      // Column(
-      //   children: [
-      //     AFB(
-      //        // Header
-      //       appKey: '1cgrvuwao',
-      //       adKey: 'rp4abc2qg',
-      //     ),
-      //     AFB(
-      //        // In-page
-      //       appKey: '1cgrvuwao',
-      //       adKey: 'd3k4m8hqf',
-      //     ),
-      //   ],
-      // ),
-      floatingActionButton: new FloatingActionButton(
-          elevation: 10.0,
-          child: new Icon(Icons.chat),
-          backgroundColor: const Color(0xFF162A49),
-          onPressed: () {}),
     );
   }
 }
@@ -189,28 +124,3 @@ class _BannerHeaderState extends State<BannerHeader> {
         ));
   }
 }
-
-class BannerInpage extends StatefulWidget {
-  const BannerInpage({Key? key}) : super(key: key);
-
-  @override
-  State<BannerInpage> createState() => _BannerInpageState();
-}
-
-class _BannerInpageState extends State<BannerInpage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      child: AFB(
-        // In-page
-        appKey: '1cgrvuwao',
-        adKey: 'd3k4m8hqf',
-      ),
-    );
-  }
-}
-
-
-// Image.network(
-            // 'https://api-afbrother.skuberg.pro/creatives/display/b63c7f02-7020-4f04-a5ee-620c63f740b4'));
