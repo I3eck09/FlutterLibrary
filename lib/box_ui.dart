@@ -47,10 +47,10 @@ class AFB extends StatelessWidget {
     return jsonResponse;
   }
 
-  impressionAds() async {
+  impressionAds(key) async {
     var url = Uri.parse(Impression_API);
     http.Response response = await http.post(url,
-        body: {'adServerKey': '6zryzgjyd', 'appKey': appKey, 'adKey': adKey});
+        body: {'adServerKey': key, 'appKey': appKey, 'adKey': adKey});
   }
 
   _getAdsByFormat(String banner_format, data) {
@@ -86,8 +86,9 @@ class AFB extends StatelessWidget {
           future: _getAdsData(),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              impressionAds();
+              impressionAds(snapshot.data['key']);
             }
+            print(snapshot.data['key']);
             return snapshot.data != null
                 ? _getAdsByFormat(snapshot.data['banner_format'], snapshot.data)
                 : Text('No ads response');

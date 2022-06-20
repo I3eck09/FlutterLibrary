@@ -47,18 +47,10 @@ class _RandomWordsState extends State<RandomWords> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        AFB(
-                          // Slide
-                          appKey: 'fw0o1kyuy',
-                          adKey: 'va62tfr08',
-                        ),
+                        AFB(appKey: "hb85x7uc8", adKey: "ia5fz5b0r"),
                       ],
                     ),
-                    AFB(
-                      // Sticky
-                      appKey: 'fw0o1kyuy',
-                      adKey: 't870af793',
-                    ),
+                    AFB(appKey: "hb85x7uc8", adKey: "7j3mxbxaz")
                   ],
                 )
                 // +++++++++++++++++++++++++++++++++++++++++++++++
@@ -94,11 +86,7 @@ class FooterPageState extends State<FooterPage> {
             const ListTile(title: Text('2')),
             const ListTile(title: Text('3')),
             const ListTile(title: Text('4')),
-            AFB(
-              // Inpage
-              appKey: 'fw0o1kyuy',
-              adKey: 'e0sd58g2x',
-            ),
+            AFB(appKey: "hb85x7uc8", adKey: "ph3vdswwd"),
             const ListTile(title: Text('5')),
             const ListTile(title: Text('6')),
             const ListTile(title: Text('7')),
