@@ -47,10 +47,10 @@ class _RandomWordsState extends State<RandomWords> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        AFB(appKey: "hb85x7uc8", adKey: "ia5fz5b0r"),
+                        // Slide
                       ],
                     ),
-                    AFB(appKey: "hb85x7uc8", adKey: "7j3mxbxaz")
+                    // Sticky
                   ],
                 )
                 // +++++++++++++++++++++++++++++++++++++++++++++++
@@ -77,16 +77,11 @@ class FooterPageState extends State<FooterPage> {
         child: ListView(
           padding: const EdgeInsets.all(0.0),
           children: <Widget>[
-            // AFB(
-            //   // Header
-            //   appKey: 'fw0o1kyuy',
-            //   adKey: 'v90lc82g4',
-            // ),
             const ListTile(title: Text('1')),
             const ListTile(title: Text('2')),
             const ListTile(title: Text('3')),
             const ListTile(title: Text('4')),
-            AFB(appKey: "hb85x7uc8", adKey: "ph3vdswwd"),
+            // Inpage
             const ListTile(title: Text('5')),
             const ListTile(title: Text('6')),
             const ListTile(title: Text('7')),
@@ -95,25 +90,5 @@ class FooterPageState extends State<FooterPage> {
         ),
       ),
     );
-  }
-}
-
-class BannerHeader extends StatefulWidget {
-  const BannerHeader({Key? key}) : super(key: key);
-
-  @override
-  State<BannerHeader> createState() => _BannerHeaderState();
-}
-
-class _BannerHeaderState extends State<BannerHeader> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 30,
-        child: AFB(
-          // Header
-          appKey: '1cgrvuwao',
-          adKey: 'rp4abc2qg',
-        ));
   }
 }

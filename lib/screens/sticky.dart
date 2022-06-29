@@ -20,7 +20,6 @@ class _StickyState extends State<Sticky> {
     var scrWidth = MediaQuery.of(context).size.width;
 
     var heightScale = (scrWidth / adsWidth) * adsHeight;
-    print(adsHeight.toString() + ' ' + heightScale.toString());
     return heightScale.toDouble();
   }
 

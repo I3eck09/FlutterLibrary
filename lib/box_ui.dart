@@ -27,9 +27,8 @@ class AFB extends StatelessWidget {
   bool isClosed = true;
 
   var Render_ads_API =
-      'https://api-afbrother.skuberg.pro/application/render_application_ads';
-  var Impression_API =
-      'https://api-afbrother.skuberg.pro/creatives/app_ad_impression';
+      'https://api.afbrother.com/application/render_application_ads';
+  var Impression_API = 'https://api.afbrother.com/creatives/app_ad_impression';
 
   BuildContext? get context => null;
 

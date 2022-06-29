@@ -53,7 +53,7 @@ class _InpageState extends State<Inpage> {
                     Closed();
                   },
                   child: Image.network(
-                    'https://api-afbrother.skuberg.pro/api/serverImage/close.png',
+                    'https://api.afbrother.com/api/serverImage/close.png',
                   ),
                 ),
               )
